@@ -1,13 +1,16 @@
+import os
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
-import os
+
+# Ruta absoluta del modelo .h5 relativo a este archivo
+ruta_modelo = os.path.join(os.path.dirname(__file__), 'modelo_coca_vs_pepsi.h5')
 
 # Cargar modelo entrenado
-modelo = tf.keras.models.load_model('modelo_coca_vs_pepsi.h5')
+modelo = tf.keras.models.load_model(ruta_modelo, compile=False)
 
-# Nombres de clases (ajusta si hace falta)
+# Nombres de clases
 clases = ['coca', 'pepsi']
 
 def predecir_imagen(ruta_imagen):
@@ -34,5 +37,3 @@ def predecir_imagen(ruta_imagen):
     )
 
     plt.show()
-
-predecir_imagen('prueba12.jpg')
